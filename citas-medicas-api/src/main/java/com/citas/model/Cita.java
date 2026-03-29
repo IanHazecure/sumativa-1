@@ -8,6 +8,10 @@ public class Cita {
     private String hora;
     private String estado;
 
+///////////////////////////////////
+///////////////////////////////////
+///////////////////////////////////
+
     public Cita(int id, String paciente, String medico, String fecha, String hora, String estado) {
         this.id = id;
         this.paciente = paciente;
@@ -15,6 +19,7 @@ public class Cita {
         this.fecha = fecha;
         this.hora = hora;
         this.estado = estado;
+
     }
 
     public int getId() {
@@ -31,7 +36,7 @@ public class Cita {
 
     public void setPaciente(String paciente) {
         this.paciente = paciente;
-    }
+}
 
     public String getMedico() {
         return medico;
@@ -49,7 +54,9 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public String getHora() {
+    public String getHora() 
+    {
+
         return hora;
     }
 
