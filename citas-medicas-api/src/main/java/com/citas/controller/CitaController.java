@@ -24,18 +24,18 @@ public class CitaController {
     }
 
     @PostMapping
-    public Cita programarCita(@RequestParam String paciente, @RequestParam String medico, 
-                              @RequestParam String fecha, @RequestParam String hora) {
-        return citaService.programarCita(paciente, medico, fecha, hora);
+    public Cita programarCita(@RequestBody Cita cita) {
+        return citaService.programarCita(cita.getPaciente(), cita.getMedico(), 
+                                          cita.getFecha(), cita.getHora());
     }
 
-    @PutMapping("/{id}/cancelar")
-    public boolean cancelarCita(@PathVariable int id) {
+    @PutMapping("/cancelar")
+    public boolean cancelarCita(@RequestParam int id) {
         return citaService.cancelarCita(id);
     }
 
-    @DeleteMapping("/{id}")
-    public boolean eliminarCita(@PathVariable int id) {
+    @DeleteMapping
+    public boolean eliminarCita(@RequestHeader int id) {
         return citaService.eliminarCita(id);
     }
 
