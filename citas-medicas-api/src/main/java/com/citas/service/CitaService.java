@@ -48,6 +48,15 @@ public class CitaService {
         return false;
     }
 
+    public boolean eliminarCita(int id) {
+        Cita cita = obtenerCitaPorId(id);
+        if (cita != null) {
+            citas.remove(cita);
+            return true;
+        }
+        return false;
+    }
+
     public List<Cita> obtenerHorariosDisponibles(String fecha) {
         return citas.stream()
                 .filter(c -> c.getFecha().equals(fecha) && c.getEstado().equals("confirmada"))

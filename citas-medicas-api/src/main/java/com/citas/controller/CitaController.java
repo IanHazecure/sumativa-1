@@ -3,10 +3,7 @@ package com.citas.controller;
 import com.citas.model.Cita;
 import com.citas.service.CitaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
@@ -21,20 +18,25 @@ public class CitaController {
         return citaService.obtenerTodasLasCitas();
     }
 
-    @GetMapping("/id")
-    public Cita obtenerCitaPorId(@RequestParam int id) {
+    @GetMapping("/{id}")
+    public Cita obtenerCitaPorId(@PathVariable int id) {
         return citaService.obtenerCitaPorId(id);
     }
 
-    @GetMapping("/programar")
+    @PostMapping
     public Cita programarCita(@RequestParam String paciente, @RequestParam String medico, 
                               @RequestParam String fecha, @RequestParam String hora) {
         return citaService.programarCita(paciente, medico, fecha, hora);
     }
 
-    @GetMapping("/cancelar")
-    public boolean cancelarCita(@RequestParam int id) {
+    @PutMapping("/{id}/cancelar")
+    public boolean cancelarCita(@PathVariable int id) {
         return citaService.cancelarCita(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean eliminarCita(@PathVariable int id) {
+        return citaService.eliminarCita(id);
     }
 
     @GetMapping("/disponibles")
