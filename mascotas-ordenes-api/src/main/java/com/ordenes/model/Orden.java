@@ -1,4 +1,4 @@
-package com.citas.model;
+package com.ordenes.model;
 
 public class Orden {
     private int id;
