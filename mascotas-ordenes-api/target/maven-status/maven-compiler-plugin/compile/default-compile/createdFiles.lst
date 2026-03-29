@@ -1,0 +1,3 @@
+com\ordenes\model\Orden.class
+com\ordenes\MascotasOrdenesApplication.class
+com\ordenes\service\OrdenService.class
