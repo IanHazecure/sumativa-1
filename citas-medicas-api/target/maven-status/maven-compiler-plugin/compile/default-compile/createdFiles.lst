@@ -1,4 +1,5 @@
 com\citas\model\Cita.class
 com\citas\controller\CitaController.class
+com\citas\exception\GlobalExceptionHandler.class
 com\citas\CitasMedicasApplication.class
 com\citas\service\CitaService.class
