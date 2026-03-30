@@ -1,3 +1,4 @@
 com\ordenes\model\Orden.class
+com\ordenes\controller\OrdenController.class
 com\ordenes\MascotasOrdenesApplication.class
 com\ordenes\service\OrdenService.class

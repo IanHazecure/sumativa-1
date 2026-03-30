@@ -9,6 +9,7 @@ public class Orden {
     private String estado;
     private String fecha;
 
+    
     public Orden(int id, String cliente, String producto, int cantidad, double precio, String estado, String fecha) {
         this.id = id;
         this.cliente = cliente;
@@ -18,11 +19,12 @@ public class Orden {
         this.estado = estado;
         this.fecha = fecha;
     }
-
-    // Getters y Setters
+//getter setters 
     public int getId() {
         return id;
-    }
+}
+
+
 
     public void setId(int id) {
         this.id = id;
@@ -43,10 +45,12 @@ public class Orden {
     public void setProducto(String producto) {
         this.producto = producto;
     }
+    
 
     public int getCantidad() {
         return cantidad;
     }
+
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
@@ -56,9 +60,11 @@ public class Orden {
         return precio;
     }
 
+
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
 
     public String getEstado() {
         return estado;
@@ -72,7 +78,10 @@ public class Orden {
         return fecha;
     }
 
+
+
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
 }
