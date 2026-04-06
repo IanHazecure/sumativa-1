@@ -1,14 +1,35 @@
 package com.ordenes.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "ORDENES")
 public class Orden {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
+    
+    @Column(name = "CLIENTE")
     private String cliente;
+    
+    @Column(name = "PRODUCTO")
     private String producto;
+    
+    @Column(name = "CANTIDAD")
     private int cantidad;
+    
+    @Column(name = "PRECIO")
     private double precio;
+    
+    @Column(name = "ESTADO")
     private String estado;
+    
+    @Column(name = "FECHA")
     private String fecha;
 
+    public Orden() {
+    }
     
     public Orden(int id, String cliente, String producto, int cantidad, double precio, String estado, String fecha) {
         this.id = id;

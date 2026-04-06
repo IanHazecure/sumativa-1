@@ -7,11 +7,7 @@ public class Cita {
     private String fecha;
     private String hora;
     private String estado;
-
-///////////////////////////////////
-///////////////////////////////////
-///////////////////////////////////
-
+    
     public Cita(int id, String paciente, String medico, String fecha, String hora, String estado) {
         this.id = id;
         this.paciente = paciente;
