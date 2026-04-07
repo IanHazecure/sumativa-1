@@ -1,45 +1,56 @@
 package com.citas.service;
 
 import com.citas.model.Cita;
+import com.citas.repository.CitaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CitaService {
-    private ArrayList<Cita> citas = new ArrayList<>();
-    private int nextId = 1;
+    @Autowired
+    private CitaRepository citaRepository;
 
     public List<Cita> obtenerTodasLasCitas() {
-        return new ArrayList<>(citas);
+        return citaRepository.findAll();
     }
 
     public Cita obtenerCitaPorId(int id) {
-        return citas.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
+        return citaRepository.findById(id).orElse(null);
     }
 
     public Cita programarCita(String paciente, String medico, String fecha, String hora) {
-        Cita nuevaCita = new Cita(nextId++, paciente, medico, fecha, hora, "confirmada");
-        citas.add(nuevaCita);
-        return nuevaCita;
+        Cita nuevaCita = new Cita();
+        nuevaCita.setPaciente(paciente);
+        nuevaCita.setMedico(medico);
+        nuevaCita.setFecha(fecha);
+        nuevaCita.setHora(hora);
+        nuevaCita.setEstado("confirmada");
+        return citaRepository.save(nuevaCita);
     }
 
     public boolean cancelarCita(int id) {
         Cita cita = obtenerCitaPorId(id);
         if (cita != null) {
             cita.setEstado("cancelada");
+            citaRepository.save(cita);
             return true;
         }
         return false;
     }
 
     public boolean eliminarCita(int id) {
-        return citas.removeIf(c -> c.getId() == id);
+        if (citaRepository.existsById(id)) {
+            citaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     public List<Cita> obtenerHorariosDisponibles(String fecha) {
-        return citas.stream()
-                .filter(c -> c.getFecha().equals(fecha) && c.getEstado().equals("confirmada"))
+        List<Cita> citasPorFecha = citaRepository.findByFecha(fecha);
+        return citasPorFecha.stream()
+                .filter(c -> c.getEstado().equals("confirmada"))
                 .toList();
     }
 }

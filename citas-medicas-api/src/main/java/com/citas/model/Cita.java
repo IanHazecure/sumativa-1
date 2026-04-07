@@ -1,12 +1,32 @@
 package com.citas.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "CITAS")
 public class Cita {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private int id;
+    
+    @Column(name = "PACIENTE")
     private String paciente;
+    
+    @Column(name = "MEDICO")
     private String medico;
+    
+    @Column(name = "FECHA")
     private String fecha;
+    
+    @Column(name = "HORA")
     private String hora;
+    
+    @Column(name = "ESTADO")
     private String estado;
+
+    public Cita() {
+    }
     
     public Cita(int id, String paciente, String medico, String fecha, String hora, String estado) {
         this.id = id;
