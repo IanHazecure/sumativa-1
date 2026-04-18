@@ -70,9 +70,7 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public String getHora() 
-    {
-
+    public String getHora() {
         return hora;
     }
 
