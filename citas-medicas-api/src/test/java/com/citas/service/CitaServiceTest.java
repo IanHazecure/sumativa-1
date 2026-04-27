@@ -64,7 +64,6 @@ public class CitaServiceTest {
 
     @Test
 
-
     @DisplayName("guardar cita nueva")
     public void testProgramarCitaNueva() {
         Cita nuevaCita = new Cita();

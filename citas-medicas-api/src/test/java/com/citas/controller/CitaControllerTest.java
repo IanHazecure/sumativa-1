@@ -22,15 +22,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(CitaController.class)
 @DisplayName("controlador de citas")
 public class CitaControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private CitaService citaService;
-
     private Cita cita1;
     private Cita cita2;
+
+//////////////////////////
+
+
+
 
     @BeforeEach
     public void setUp() {
@@ -50,6 +52,9 @@ public class CitaControllerTest {
                 .andExpect(jsonPath("$._links.self").exists());
 
         verify(citaService, times(1)).obtenerTodasLasCitas();
+
+
+        
     }
 
     @Test
@@ -64,7 +69,9 @@ public class CitaControllerTest {
                 .andExpect(jsonPath("$._links['todas-citas']").exists());
 
         verify(citaService, times(1)).obtenerCitaPorId(1);
+
     }
+    
 
     @Test
     @DisplayName("crear nueva cita con HATEOAS")
@@ -82,6 +89,8 @@ public class CitaControllerTest {
         verify(citaService, times(1)).programarCita(anyString(), anyString(), anyString(), anyString());
     }
 
+
+
     @Test
     @DisplayName("cancelar cita")
     public void testCancelarCita() throws Exception {
@@ -96,7 +105,9 @@ public class CitaControllerTest {
         verify(citaService, times(1)).cancelarCita(1);
     }
 
+
     @Test
+
     @DisplayName("eliminar cita por id")
     public void testEliminarCita() throws Exception {
         when(citaService.eliminarCita(1)).thenReturn(true);
@@ -105,5 +116,12 @@ public class CitaControllerTest {
                 .andExpect(status().isOk());
 
         verify(citaService, times(1)).eliminarCita(1);
+
     }
+
+
+
+
+
+
 }

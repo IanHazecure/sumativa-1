@@ -15,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @DisplayName("repositorio de citas")
 public class CitaRepositoryTest {
-
     @Autowired
     private CitaRepository citaRepository;
-
     private Cita cita1;
     private Cita cita2;
-
     @BeforeEach
+
+
+    /////////////////////////
     public void setUp() {
         citaRepository.deleteAll();
 
@@ -32,7 +32,6 @@ public class CitaRepositoryTest {
         citaRepository.save(cita1);
         citaRepository.save(cita2);
     }
-
     @Test
     @DisplayName("citas por fecha")
     public void testFindByFecha() {
@@ -43,6 +42,7 @@ public class CitaRepositoryTest {
         assertTrue(resultado.stream().allMatch(c -> c.getFecha().equals("2024-04-27")));
     }
 
+/////////////////////
     @Test
     @DisplayName("citas por estado")
     public void testFindByEstado() {
@@ -52,6 +52,7 @@ public class CitaRepositoryTest {
         assertTrue(resultado.size() >= 2);
         assertTrue(resultado.stream().allMatch(c -> c.getEstado().equals("confirmada")));
     }
+
 
     @Test
     @DisplayName("guardar cita")
